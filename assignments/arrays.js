@@ -74,8 +74,35 @@ console.log(`The last car is a ${lastCar.car_make} ${lastCar.car_model}.`);
 
 // ==== Challenge 3 ====
 // The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
-let carModels = [];
-console.log();
+
+let carModels = function(arr) {
+    let models = [];
+    for(i=0; i<arr.length; i++) {
+        models.push(arr[i].car_make)
+    }
+    return models;
+}
+
+
+
+function swap (arr, i, s) {
+    let temp = arr[i];
+    arr[i] = arr[s];
+    arr[s] = temp;
+}
+
+function sortModels (arr) {
+    for(i=0; i < arr.length; i++) {
+        for(s=0; s < arr.length; s++) {
+            if(arr[s-1] > arr[s]){
+                swap(arr, s - 1, s);
+            }
+        }
+    }
+    console.log(arr);
+}
+
+sortModels(carModels(inventory));
 
 // ==== Challenge 4 ====
 // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
